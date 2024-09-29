@@ -1,16 +1,9 @@
-# flutter_application_1
+# Lista de Tarefas
 
-A new Flutter project.
+![Screenshot_1727644388](https://github.com/user-attachments/assets/817f5737-d5b3-4b88-b67c-d564a9c9a675)
 
-## Getting Started
+![Screenshot_1727644398](https://github.com/user-attachments/assets/a039e9d8-a184-4b30-80e4-80a27b6cd2a5)
 
-This project is a starting point for a Flutter application.
+![Screenshot_1727644416](https://github.com/user-attachments/assets/764df0a3-e6ba-487f-9c3c-c1f0d41ff848)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_1727644447](https://github.com/user-attachments/assets/e34c4f09-0bb9-404f-96cb-6f27668c0aca)
