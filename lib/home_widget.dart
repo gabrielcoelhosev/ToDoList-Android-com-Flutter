@@ -10,6 +10,7 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   final TextEditingController _textControl = TextEditingController();
   List<String> _tarefas = [];
+  List<String> _tarefasConcluidas = [];
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +114,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          // Aqui você pode marcar como concluída
+                          setState(() {
+                            _tarefasConcluidas.add(_tarefas[index]);
+                            _tarefas.removeAt(index);
+                          });
                         },
                         icon: Icon(
                           Icons.check_circle,
@@ -154,19 +158,74 @@ class _HomeWidgetState extends State<HomeWidget> {
               },
             ),
             SizedBox(height: 20),
-            Center(
-              child: Text(
-                'Tarefas Concluídas',
-                style: TextStyle(color: Colors.white),
+            if (_tarefasConcluidas.isNotEmpty)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      'Tarefas Concluídas',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'FiraCode',
+                          fontSize: 18),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            // Conteúdo adicional abaixo da lista
-            SizedBox(height: 100), // Simulação de espaço extra
-            Center(
-              child: Text(
-                'Mais conteúdo aqui...',
-                style: TextStyle(color: Colors.white),
-              ),
+            ListView.builder(
+              shrinkWrap:
+                  true, // Permite que o ListView se ajuste dentro do SingleChildScrollView
+              physics:
+                  NeverScrollableScrollPhysics(), // Desativa a rolagem interna
+              itemCount: _tarefasConcluidas.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          // Aqui você pode marcar como concluída
+                        },
+                        icon: Icon(
+                          Icons.check_circle,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                            border: Border.all(width: 1, color: Colors.white),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: ListTile(
+                            title: Padding(
+                              padding: const EdgeInsets.all(.0),
+                              child: Text(
+                                _tarefasConcluidas[index],
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'FiraCode'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _tarefas.add(_tarefasConcluidas[index]);
+                            _tarefasConcluidas.removeAt(index);
+                          });
+                        },
+                        icon: Icon(Icons.remove_circle, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
